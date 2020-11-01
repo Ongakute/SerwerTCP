@@ -12,8 +12,8 @@ namespace SerwerTCP
     {
         static void Main(string[] args)
         {
-            BibliotekaKlas.Serwer poloczenie = new Serwer();
-            poloczenie.Start();
+            Serwer a = new Serwer(IPAddress.Parse("127.0.0.1"), 7777);
+            a.Start();
            
             
         }
