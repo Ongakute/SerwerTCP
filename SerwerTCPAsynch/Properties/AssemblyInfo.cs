@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // Ogólne informacje o zestawie są kontrolowane poprzez następujący 
 // zestaw atrybutów. Zmień wartości tych atrybutów, aby zmodyfikować informacje
 // powiązane z zestawem.
-[assembly: AssemblyTitle("BibliotekaKlas")]
+[assembly: AssemblyTitle("SerwerTCPAsynch")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("BibliotekaKlas")]
+[assembly: AssemblyProduct("SerwerTCPAsynch")]
 [assembly: AssemblyCopyright("Copyright ©  2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Następujący identyfikator GUID jest identyfikatorem biblioteki typów w przypadku udostępnienia tego projektu w modelu COM
-[assembly: Guid("4d91f370-1072-4a44-9376-c95e4693a53d")]
+[assembly: Guid("6c436381-aa17-405f-83a7-0b0dbaa2e66e")]
 
 // Informacje o wersji zestawu zawierają następujące cztery wartości:
 //

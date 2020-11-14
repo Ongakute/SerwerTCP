@@ -1,4 +1,4 @@
-﻿using BibliotekaKlas;
+﻿using SerwerTCPAsynch;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,10 +12,9 @@ namespace SerwerTCP
     {
         static void Main(string[] args)
         {
-            Serwer a = new Serwer(IPAddress.Parse("127.0.0.1"), 7777);
-            a.Start();
-           
-            
+            SerwerTCPAsynch.SerwerAsynchroniczny serwer = new SerwerTCPAsynch.SerwerAsynchroniczny(IPAddress.Parse("127.0.0.1"), 7777);
+            serwer.start();
+
         }
     }
 }

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A1779F40-FC64-4A80-B4C4-43064CE506E1}</ProjectGuid>
+    <ProjectGuid>{92A570D0-AE4F-4384-B34E-FB909121657C}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>SerwerTCP</RootNamespace>
     <AssemblyName>SerwerTCP</AssemblyName>
@@ -45,9 +45,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BibliotekaKlas\BibliotekaKlas.csproj">
-      <Project>{4d91f370-1072-4a44-9376-c95e4693a53d}</Project>
-      <Name>BibliotekaKlas</Name>
+    <ProjectReference Include="..\SerwerTCPAsynch\SerwerTCPAsynch.csproj">
+      <Project>{6c436381-aa17-405f-83a7-0b0dbaa2e66e}</Project>
+      <Name>SerwerTCPAsynch</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

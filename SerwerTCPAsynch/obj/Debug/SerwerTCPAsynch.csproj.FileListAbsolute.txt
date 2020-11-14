@@ -1,0 +1,6 @@
+C:\Users\Anna\source\repos\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csprojAssemblyReference.cache
+C:\Users\Anna\source\repos\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csproj.CoreCompileInputs.cache
+C:\Users\Anna\source\repos\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.dll
+C:\Users\Anna\source\repos\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.pdb
+C:\Users\Anna\source\repos\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.dll
+C:\Users\Anna\source\repos\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.pdb

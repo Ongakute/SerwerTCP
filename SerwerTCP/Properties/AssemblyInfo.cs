@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Następujący identyfikator GUID jest identyfikatorem biblioteki typów w przypadku udostępnienia tego projektu w modelu COM
-[assembly: Guid("a1779f40-fc64-4a80-b4c4-43064ce506e1")]
+[assembly: Guid("92a570d0-ae4f-4384-b34e-fb909121657c")]
 
 // Informacje o wersji zestawu zawierają następujące cztery wartości:
 //
