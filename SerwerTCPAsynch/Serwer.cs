@@ -21,7 +21,7 @@ namespace SerwerTCPAsynch
         byte[] bufor;
         TcpListener serwer;
         TcpClient klient;
-        NetworkStream stream;
+        NetworkStream strumien;
         bool polaczony;
         #endregion
 
@@ -30,7 +30,7 @@ namespace SerwerTCPAsynch
 
         protected TcpClient TcpClient { get => klient; set => klient = value; }
 
-        protected NetworkStream Strumien { get => stream; set => stream = value; }
+        protected NetworkStream Strumien { get => strumien; set => strumien = value; }
 
         protected byte[] Bufor { get => bufor; set => bufor = value; }
 

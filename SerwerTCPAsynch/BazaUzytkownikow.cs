@@ -20,19 +20,12 @@ namespace SerwerTCPAsynch
             uzytkownicy.Add("user", "user");
         }
 
-        /* public void Ustawiacz(string klucz, string wartosc)
-         {
-             if (uzytkownicy.ContainsKey(klucz))
-             {
-                 uzytkownicy[klucz] = wartosc;
-             }
-             else
-             {
-                 uzytkownicy.Add(klucz, wartosc);
-             }
-
-         }*/
-
+       
+        /// <summary>
+        /// Funkcja, która umożliwia pobranie hasła na podstawie loginu
+        /// </summary>
+        /// <param name="klucz"></param>
+        /// <returns></returns>
         public string pobieraczHasla(string klucz)
         {
             string wynik = null;
@@ -45,11 +38,21 @@ namespace SerwerTCPAsynch
             return wynik;
         }
 
+        /// <summary>
+        /// Funkcja dodająca użytkowników do bazy
+        /// </summary>
+        /// <param name="login"></param>
+        /// <param name="haslo"></param>
         public void dodajUzytkownika(string login, string haslo)
         {
             uzytkownicy.Add(login, haslo);
         }
 
+        /// <summary>
+        /// Funkcja sprawdzająca czy istnieje uzytkownik o danym loginie
+        /// </summary>
+        /// <param name="login"></param>
+        /// <returns></returns>
         public bool czyIstnieje(string login)
         {
             if (uzytkownicy.ContainsKey(login))
