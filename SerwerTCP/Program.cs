@@ -12,7 +12,7 @@ namespace SerwerTCP
     {
         static void Main(string[] args)
         {
-            SerwerTCPAsynch.SerwerAsynchroniczny serwer = new SerwerTCPAsynch.SerwerAsynchroniczny(IPAddress.Parse("127.0.0.1"), 7777);
+            SerwerTCPAsynch.SerwerAsynchroniczny serwer = new SerwerTCPAsynch.SerwerAsynchroniczny(IPAddress.Parse("127.0.0.1"), 2048);
             serwer.start();
 
         }

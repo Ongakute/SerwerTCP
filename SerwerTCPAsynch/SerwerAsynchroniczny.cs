@@ -81,11 +81,49 @@ namespace SerwerTCPAsynch
                 haslo = odbieranieWiadomosci();
 
             } while (!logowanie.zaloguj(login, haslo));
-            Console.Write("Koniec while");
+
+            Console.Write("Uzytkownik zalogowany \n\r");
+            wysylanieWiadomosci("Poprawnie zalogowano!");
+
+            Szyfrowanie szyfr = new Szyfrowanie();
+            String klucz, wiadomosc_szyfr;
+
             while (true)
             {
+                wysylanieWiadomosci("Wybierz opcje:  a) Zaszyfruj wiadomosc  b) Odszyfruj Wiadomosc ");
                 wiadomosc = odbieranieWiadomosci();
-                wysylanieWiadomosci(wiadomosc);
+
+                if (wiadomosc.Contains("a"))
+                {
+                    wysylanieWiadomosci("Wybrano Szyfrowanie: \r\n");
+                    wysylanieWiadomosci("Wpisz wiadomosc: \r\n");
+                    wiadomosc_szyfr = odbieranieWiadomosci();
+                    wiadomosc_szyfr = odbieranieWiadomosci();
+                    Console.Write(wiadomosc_szyfr + "\n\r");
+                    wysylanieWiadomosci("Wpisz klucz do szyfrowania \r\n");
+                    klucz = odbieranieWiadomosci();
+                    klucz = odbieranieWiadomosci();
+                    Console.Write(klucz + "\n\r");
+                    wiadomosc = szyfr.tworzenieSzyfru(wiadomosc_szyfr, klucz);
+                    wysylanieWiadomosci("Wiadomosc zaszyfrowana: ");
+                    wysylanieWiadomosci(wiadomosc + "\r\n");
+
+                } else if(wiadomosc.Contains("b"))
+                {
+                    wysylanieWiadomosci("Wybrano Deszyfrowanie: \r\n");
+                    wysylanieWiadomosci("Wpisz wiadomosc: \r\n");
+                    wiadomosc_szyfr = odbieranieWiadomosci();
+                    wiadomosc_szyfr = odbieranieWiadomosci();
+                    Console.Write(wiadomosc_szyfr + "\n\r");
+                    wysylanieWiadomosci("Wpisz klucz do deszyfrowania \r\n");
+                    klucz = odbieranieWiadomosci();
+                    klucz = odbieranieWiadomosci();
+                    Console.Write(klucz + "\n\r");
+                    wiadomosc = szyfr.deszyfracja(wiadomosc_szyfr, klucz);
+                    wysylanieWiadomosci("Wiadomosc odszyfrowana: \r\n");
+                    wysylanieWiadomosci(wiadomosc + "\r\n");
+                }
+                //wysylanieWiadomosci(wiadomosc);
             }
         }
 

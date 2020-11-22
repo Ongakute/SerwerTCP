@@ -7,3 +7,12 @@ C:\Users\Anna\source\repos\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCPAsynch.pdb
 C:\Users\Anna\source\repos\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CopyComplete
 C:\Users\Anna\source\repos\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.exe
 C:\Users\Anna\source\repos\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.pdb
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\bin\Debug\SerwerTCP.exe
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\bin\Debug\SerwerTCP.pdb
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\bin\Debug\SerwerTCPAsynch.dll
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\bin\Debug\SerwerTCPAsynch.pdb
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.csprojAssemblyReference.cache
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.csproj.CoreCompileInputs.cache
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.csproj.CopyComplete
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.exe
+C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.pdb
