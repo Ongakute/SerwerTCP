@@ -8,6 +8,7 @@ namespace SerwerTCPAsynch
 {
     class Szyfrowanie
     {
+    
         /// <summary>
         /// Funkcja zamienia małe litery na duże przez zamianę kodów ASCII
         /// </summary>

@@ -11,7 +11,7 @@ namespace SerwerTCPAsynch
     /// <summary>
     /// Abstrakcyjna klasa Serwer
     /// </summary>
-    public abstract class Serwer
+    public abstract class Serwer <T> where T: ProtokolKomunikacyjny, new()
     {
         #region Pola
 

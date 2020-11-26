@@ -16,3 +16,12 @@ C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.csproj.Core
 C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.csproj.CopyComplete
 C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.exe
 C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCP\obj\Debug\SerwerTCP.pdb
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csprojAssemblyReference.cache
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.exe
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.pdb
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCP.exe
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCP.pdb
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCPAsynch.dll
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCPAsynch.pdb
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CopyComplete

@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BazaUzytkownikow.cs" />
+    <Compile Include="ProtokolKomunikacyjny.cs" />
     <Compile Include="Logowanie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProtokolSzyfrowania.cs" />
     <Compile Include="Serwer.cs" />
     <Compile Include="SerwerAsynchroniczny.cs" />
     <Compile Include="Szyfrowanie.cs" />

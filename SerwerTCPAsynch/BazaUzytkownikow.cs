@@ -15,9 +15,10 @@ namespace SerwerTCPAsynch
         public BazaUzytkownikow()
         {
             uzytkownicy = new Dictionary<String, String>();
-            uzytkownicy.Add("admin", "admin");
+            //uzytkownicy.Add("admin", "admin");
             uzytkownicy.Add("root", "root");
             uzytkownicy.Add("user", "user");
+            uzytkownicy.Add("admin", "\r\n");
         }
 
        

@@ -8,11 +8,11 @@ using System.Text;
 
 namespace SerwerTCPAsynch
 {
-    public class SerwerAsynchroniczny : Serwer
+    public class SerwerAsynchroniczny<T> : Serwer<T> where T: ProtokolSzyfrowania, new()
     {
         #region Zmienne
 
-        Logowanie logowanie;
+        
         /// <summary>
         /// Delegatura watku dla każdego klienta
         /// </summary>
@@ -28,9 +28,9 @@ namespace SerwerTCPAsynch
         /// <param port="port"></param>
         public SerwerAsynchroniczny(IPAddress IP, int port) : base(IP, port)
         {
-            logowanie = new Logowanie();
+       
         }
-
+        
         #endregion
 
         #region Funkcje
@@ -67,64 +67,32 @@ namespace SerwerTCPAsynch
         /// <param name="stream"></param>
         protected override void rozpocznijTransmisje(NetworkStream strumien)
         {
-            string login;
-            string haslo;
-            string wiadomosc;
+            ProtokolSzyfrowania protokol = new T();
+            Logowanie logowanie = new Logowanie();
+           
+            String wiadomosc = null;
 
-            wysylanieWiadomosci("Witaj uzytkowniku! \n\r");
+            wysylanieWiadomosci("Witaj uzytkowniku! Aby rozpoczac nacisnij Enter");
+
             do
             {
-                wysylanieWiadomosci("Podaj login: ");
-                login = odbieranieWiadomosci();
-                wysylanieWiadomosci("Podaj haslo: ");
-                haslo = odbieranieWiadomosci();
-                haslo = odbieranieWiadomosci();
+                wiadomosc = odbieranieWiadomosci();
+                wysylanieWiadomosci(logowanie.utworzOdpowiedz(wiadomosc));
+                //wiadomosc = "";
+              
+            } while (!logowanie.statusLogowania);
 
-            } while (!logowanie.zaloguj(login, haslo));
-
+            
             Console.Write("Uzytkownik zalogowany \n\r");
-            wysylanieWiadomosci("Poprawnie zalogowano!");
-
-            Szyfrowanie szyfr = new Szyfrowanie();
-            String klucz, wiadomosc_szyfr;
-
+            wysylanieWiadomosci(protokol.inicjalizujPrace());
             while (true)
             {
-                wysylanieWiadomosci("Wybierz opcje:  a) Zaszyfruj wiadomosc  b) Odszyfruj Wiadomosc ");
-                wiadomosc = odbieranieWiadomosci();
-
-                if (wiadomosc.Contains("a"))
-                {
-                    wysylanieWiadomosci("Wybrano Szyfrowanie: \r\n");
-                    wysylanieWiadomosci("Wpisz wiadomosc: \r\n");
-                    wiadomosc_szyfr = odbieranieWiadomosci();
-                    wiadomosc_szyfr = odbieranieWiadomosci();
-                    Console.Write(wiadomosc_szyfr + "\n\r");
-                    wysylanieWiadomosci("Wpisz klucz do szyfrowania \r\n");
-                    klucz = odbieranieWiadomosci();
-                    klucz = odbieranieWiadomosci();
-                    Console.Write(klucz + "\n\r");
-                    wiadomosc = szyfr.tworzenieSzyfru(wiadomosc_szyfr, klucz);
-                    wysylanieWiadomosci("Wiadomosc zaszyfrowana: ");
-                    wysylanieWiadomosci(wiadomosc + "\r\n");
-
-                } else if(wiadomosc.Contains("b"))
-                {
-                    wysylanieWiadomosci("Wybrano Deszyfrowanie: \r\n");
-                    wysylanieWiadomosci("Wpisz wiadomosc: \r\n");
-                    wiadomosc_szyfr = odbieranieWiadomosci();
-                    wiadomosc_szyfr = odbieranieWiadomosci();
-                    Console.Write(wiadomosc_szyfr + "\n\r");
-                    wysylanieWiadomosci("Wpisz klucz do deszyfrowania \r\n");
-                    klucz = odbieranieWiadomosci();
-                    klucz = odbieranieWiadomosci();
-                    Console.Write(klucz + "\n\r");
-                    wiadomosc = szyfr.deszyfracja(wiadomosc_szyfr, klucz);
-                    wysylanieWiadomosci("Wiadomosc odszyfrowana: \r\n");
-                    wysylanieWiadomosci(wiadomosc + "\r\n");
-                }
-                //wysylanieWiadomosci(wiadomosc);
+               wiadomosc = odbieranieWiadomosci();
+                if (wiadomosc == "\r\n")
+                    wiadomosc = odbieranieWiadomosci();
+               wysylanieWiadomosci(protokol.utworzOdpowiedz(wiadomosc));
             }
+
         }
 
         /// <summary>
@@ -135,8 +103,6 @@ namespace SerwerTCPAsynch
         {
             try
             {
-
-
                 Bufor = Encoding.ASCII.GetBytes(wiadomosc);
                 Strumien.Write(Bufor, 0, Bufor.Length);
                 Array.Clear(Bufor, 0, Bufor.Length);

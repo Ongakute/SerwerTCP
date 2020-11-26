@@ -10,3 +10,9 @@ C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch
 C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csproj.CoreCompileInputs.cache
 C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.dll
 C:\Users\lewy\Desktop\SerwerTCP-master\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.pdb
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.dll
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.pdb
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csprojAssemblyReference.cache
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.dll
+C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.pdb
