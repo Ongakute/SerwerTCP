@@ -1,4 +1,0 @@
-C:\Users\Łukasz\Documents\SerwerTCP\Klient\obj\Debug\Klient.csprojAssemblyReference.cache
-C:\Users\Łukasz\Documents\SerwerTCP\Klient\obj\Debug\Klient.Properties.Resources.resources
-C:\Users\Łukasz\Documents\SerwerTCP\Klient\obj\Debug\Klient.csproj.GenerateResource.cache
-C:\Users\Łukasz\Documents\SerwerTCP\Klient\obj\Debug\Klient.csproj.CoreCompileInputs.cache
