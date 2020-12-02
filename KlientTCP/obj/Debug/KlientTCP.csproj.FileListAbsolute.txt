@@ -1,0 +1,8 @@
+C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csprojAssemblyReference.cache
+C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.Properties.Resources.resources
+C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csproj.GenerateResource.cache
+C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\bin\Debug\KlientTCP.exe
+C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\bin\Debug\KlientTCP.pdb
+C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.exe
+C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.pdb

@@ -22,84 +22,72 @@ namespace SerwerTCPAsynch
         public String inicjalizujPrace()
         {
             String odpowiedz;
-                odpowiedz = "Wybierz opcje:  a) Zaszyfruj wiadomosc  b) Odszyfruj Wiadomosc \r\n";
-
+            odpowiedz = "Wybierz opcje:  a) Zaszyfruj wiadomosc  b) Odszyfruj Wiadomosc \r\n";
 
             return odpowiedz;
         }
         public override string utworzOdpowiedz(String wiadomosc)
         {
-            String odpowiedz = null;
-           if(status == false && trybPracy == 0)
+           String odpowiedz = null;
+            if (status == false && trybPracy == 0)
             {
-                
+
                 if (wiadomosc == "a") trybPracy = 1;
                 else if (wiadomosc == "b") trybPracy = 2;
-                odpowiedz = "";
+                else
+                {
+                    odpowiedz = "Wybierz opcje:  a) Zaszyfruj wiadomosc  b) Odszyfruj Wiadomosc \r\n";
+                    return odpowiedz;
+                }
                 status = true;
+                statusPracy = 0;
+                odpowiedz = praca(null);
+                
             }
             else
             {
-                switch(statusPracy)
-                {
-                    case 0:
-                        {
-                            odpowiedz = "Podaj tekst do zaszyfrowania.";
-                            statusPracy++;
-                            break;
-                        }
-                    case 1:
-                        {
-                            tekst = wiadomosc;
-                            odpowiedz = "Podaj klucz do szyfru.";
-                            statusPracy++;
-                            break;
-                        }
-                    case 2:
-                        {
-                            klucz = wiadomosc;
-                            if (trybPracy == 1)
-                                odpowiedz = "Zaszyfrowany tekst " + szyfrowanie.tworzenieSzyfru(tekst, klucz);
-                            
-                            else
-                                odpowiedz = szyfrowanie.deszyfracja(tekst, klucz);
-                            statusPracy = 0;
-                            trybPracy = 0;
-                            break;
-                            
-                        }
-                }
+                odpowiedz = praca(wiadomosc);
             }
-
+                
             return odpowiedz;
         }
 
-        /*private String praca()
+        private String praca(String wiadomosc)
         {
             String odpowiedz = null;
-            
-
-            switch (trybPracy)
+            switch (statusPracy)
             {
                 case 0:
                     {
-                        odpowiedz = szyfrowanie.tworzenieSzyfru(wiadomosc[0], wiadomosc[1]);
+                        odpowiedz = "Podaj tekst: ";
+                        statusPracy++;
                         break;
                     }
                 case 1:
                     {
-                        odpowiedz = szyfrowanie.deszyfracja(wiadomosc[0], wiadomosc[1]);
+                        tekst = wiadomosc;
+                        odpowiedz = "Podaj klucz do szyfru.";
+                        statusPracy++;
                         break;
                     }
-                default:
+                case 2:
                     {
-                        odpowiedz = "Niezidentyfikowany blad!";
+                        klucz = wiadomosc;
+                        if (trybPracy == 1)
+                            odpowiedz = "Zaszyfrowany tekst " + szyfrowanie.tworzenieSzyfru(tekst, klucz) + ":/\r\n";
+
+                        else
+                            odpowiedz = szyfrowanie.deszyfracja(tekst, klucz) + ":/\r\n";
+                        statusPracy = 0;
+                        trybPracy = 0;
+                        status = false;
                         break;
+
                     }
             }
 
             return odpowiedz;
-        }*/
+        }
 
     }
 }

@@ -41,10 +41,9 @@ namespace SerwerTCPAsynch
         {
 
             while (true)
-
             {
                 TcpClient tcpKlient = TcpListener.AcceptTcpClient();
-
+                Console.WriteLine("ok. tb");
                 Strumien = tcpKlient.GetStream();
 
                 watekTransmisji watek = new watekTransmisji(rozpocznijTransmisje);
@@ -72,24 +71,23 @@ namespace SerwerTCPAsynch
            
             String wiadomosc = null;
 
-            wysylanieWiadomosci("Witaj uzytkowniku! Aby rozpoczac nacisnij Enter");
+            //wiadomosc = odbieranieWiadomosci();
+            //wysylanieWiadomosci("Witaj uzytkowniku! Aby rozpoczac nacisnij Enter");
 
-            do
+            while (!logowanie.statusLogowania)
             {
                 wiadomosc = odbieranieWiadomosci();
                 wysylanieWiadomosci(logowanie.utworzOdpowiedz(wiadomosc));
                 //wiadomosc = "";
-              
-            } while (!logowanie.statusLogowania);
+            } 
 
             
             Console.Write("Uzytkownik zalogowany \n\r");
+            wiadomosc = odbieranieWiadomosci();
             wysylanieWiadomosci(protokol.inicjalizujPrace());
             while (true)
             {
                wiadomosc = odbieranieWiadomosci();
-                if (wiadomosc == "\r\n")
-                    wiadomosc = odbieranieWiadomosci();
                wysylanieWiadomosci(protokol.utworzOdpowiedz(wiadomosc));
             }
 

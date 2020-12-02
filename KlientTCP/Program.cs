@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Sockets;
 using System.Windows.Forms;
+using System.Runtime.InteropServices;
 
 namespace Klient
 {
@@ -12,16 +13,21 @@ namespace Klient
         /// Główny punkt wejścia dla aplikacji.
         /// </summary>
         [STAThread]
+        [DllImport("kernel32.dll", SetLastError = true)]
+        [return: MarshalAs(UnmanagedType.Bool)]
+        static extern bool AllocConsole();
         static void Main()
         {
-            Application.EnableVisualStyles();
-            Application.SetCompatibleTextRenderingDefault(false);
+            /*Application.EnableVisualStyles();
+            Application.SetCompatibleTextRenderingDefault(false);*/
             Application.Run(new Form1());
+            AllocConsole();
             Connect();
         }
 
         static void Connect()
         {
+            Console.WriteLine("ok. tb");
             try
             {
                 // Create a TcpClient.
@@ -30,6 +36,7 @@ namespace Klient
                 // combination.
                 Int32 port = 13000;
                 TcpClient client = new TcpClient("127.0.0.1", 2048);
+                client.Connect("localhost", 2048);
 
                 // Translate the passed message into ASCII and store it as a Byte array.
                 Byte[] data = new Byte[1024];
@@ -40,9 +47,9 @@ namespace Klient
                 NetworkStream stream = client.GetStream();
 
                 // Send the message to the connected TcpServer.
-                stream.Write(data, 0, data.Length);
+                stream.Read(data, 0, data.Length);
 
-                Console.WriteLine("Sent: {0}", message);
+                Console.WriteLine("Sent: {0}", data);
 
                 // Receive the TcpServer.response.
 
