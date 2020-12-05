@@ -34,3 +34,12 @@ C:\Users\Anna\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.Co
 C:\Users\Anna\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CopyComplete
 C:\Users\Anna\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.exe
 C:\Users\Anna\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.pdb
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCP.exe
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCP.pdb
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCPAsynch.dll
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCPAsynch.pdb
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csprojAssemblyReference.cache
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CoreCompileInputs.cache
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CopyComplete
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.exe
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.pdb

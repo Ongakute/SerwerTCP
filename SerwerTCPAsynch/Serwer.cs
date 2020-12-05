@@ -60,6 +60,17 @@ namespace SerwerTCPAsynch
         /// <param mojPort="port"></param>
         public Serwer(IPAddress adresIP, int port)
         {
+            if (adresIP.ToString() != "127.0.0.1")
+            {
+                throw new Exception("Podano błędny adres IP");
+            }
+
+            if (port != 2048)
+            {
+                throw new Exception("Podano błędny port");
+            }
+
+
             mojeIP = adresIP;
             mojPort = port;
             bufor = new byte[1024];

@@ -16,3 +16,9 @@ C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.c
 C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csproj.CoreCompileInputs.cache
 C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.dll
 C:\Users\Łukasz\Documents\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.pdb
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.dll
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.pdb
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csprojAssemblyReference.cache
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csproj.CoreCompileInputs.cache
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.dll
+C:\Users\lewy\Documents\GitHub\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.pdb
