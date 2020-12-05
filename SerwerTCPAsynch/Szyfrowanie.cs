@@ -100,14 +100,14 @@ namespace SerwerTCPAsynch
                 row.Clear();
             }
 
-            for (int i = 0; i < wys; i++)
+           /* for (int i = 0; i < wys; i++)
             {
                 for (int j = 0; j < szer; j++)
                 {
                     Console.Write(tablicaSzyfru[i][j]);
                 }
                 Console.WriteLine();
-            }
+            }*/
 
             //czytanie po przekątnej w celu utworzenia szyfru
             char[] szyfr = new char[dlugoscSzyfru];

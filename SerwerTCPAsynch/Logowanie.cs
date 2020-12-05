@@ -58,6 +58,8 @@ namespace SerwerTCPAsynch
                 else
                 {
                     odpowiedz = "Niepoprawny login lub haslo, sprobuj jeszcze raz.";
+                    czyLogin = false;
+                    czyHaslo = false;
                 }
 
             }

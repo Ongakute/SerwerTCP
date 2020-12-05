@@ -18,7 +18,7 @@ namespace SerwerTCPAsynch
             //uzytkownicy.Add("admin", "admin");
             uzytkownicy.Add("root", "root");
             uzytkownicy.Add("user", "user");
-            uzytkownicy.Add("admin", "\r\n");
+            uzytkownicy.Add("admin", "admin");
         }
 
        

@@ -47,7 +47,7 @@ namespace KlientTCP
 
             while (!czyZalogowany)
             {
-
+                Odbior:
                 dane = new Byte[1024];
                 // odebranie danych od serwera.
                 int odczyt = strumien.Read(dane, 0, dane.Length);
@@ -61,7 +61,15 @@ namespace KlientTCP
                     dane = new Byte[1024];
                     dane = System.Text.Encoding.ASCII.GetBytes("ok");
                     strumien.Write(dane, 0, dane.Length);
+                    Console.Clear();
                     break;
+                }
+                else if(wiadomosc.Contains("Niepoprawny login"))
+                {
+                    dane = new Byte[1024];
+                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                    strumien.Write(dane, 0, dane.Length);
+                    goto Odbior;
                 }
                 
 
@@ -72,6 +80,11 @@ namespace KlientTCP
 
                 //wysylanie wiadomosci
                 odpowiedz = Console.ReadLine();
+                if (odpowiedz.Equals("koniec"))
+                {
+                    break;
+                }
+
                 dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                 strumien.Write(dane, 0, dane.Length);
             }
@@ -102,6 +115,12 @@ namespace KlientTCP
                 //wysylanie
 
                 odpowiedz = Console.ReadLine();
+
+                if (odpowiedz.Equals("koniec"))
+                {
+                    break;
+                }
+
                 dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                 strumien.Write(dane, 0, dane.Length);
             }
