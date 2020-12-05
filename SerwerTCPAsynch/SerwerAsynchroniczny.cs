@@ -43,7 +43,6 @@ namespace SerwerTCPAsynch
             while (true)
             {
                 TcpClient tcpKlient = TcpListener.AcceptTcpClient();
-                Console.WriteLine("ok. tb");
                 Strumien = tcpKlient.GetStream();
 
                 watekTransmisji watek = new watekTransmisji(rozpocznijTransmisje);
@@ -108,7 +107,7 @@ namespace SerwerTCPAsynch
             }
             catch (IOException e)
             {
-                Console.Write("BLAD!");
+                //Console.Write("BLAD!");
             }
         }
 
@@ -130,7 +129,7 @@ namespace SerwerTCPAsynch
             }
             catch (IOException e)
             {
-                Console.Write("BLAD!");
+                //Console.Write("BLAD!");
             }
             return wiadomosc;
         }
