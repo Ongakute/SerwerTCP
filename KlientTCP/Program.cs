@@ -11,7 +11,15 @@ namespace KlientTCP
         /// </summary>
         static void Main(string[] args)
         {
-            Klient klient = new Klient();
+            String ip, port;
+
+            Console.Write("Podaj adres IP serwera: ");
+            ip = Console.ReadLine();
+            Console.Write("Podaj port serwera: ");
+            port = Console.ReadLine();
+
+            Klient klient = new Klient(ip, Int32.Parse(port));
+            Console.Clear();
             klient.Polacz();
         }
 

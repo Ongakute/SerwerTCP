@@ -10,13 +10,23 @@ namespace KlientTCP
     public class Klient
     {
 
-        int port = 13000;
-        TcpClient klient = new TcpClient();
+        String ip;
+        int port;
         bool czyZalogowany = false;
         bool czyOpcja = false;
+        Byte[] dane = new Byte[1024];
         String wiadomosc = String.Empty;
         String odpowiedz = String.Empty;
-        Byte[] dane = new Byte[1024];
+        TcpClient klient = new TcpClient();
+
+        public Klient(String ip, int port)
+        {
+            this.ip = ip;
+            this.port = port;
+         }
+        
+        
+        
         
 
         /// <summary>
@@ -26,7 +36,7 @@ namespace KlientTCP
         {
             
             
-            klient.Connect("127.0.0.1", 2048);
+            klient.Connect(ip,port);
             NetworkStream strumien = klient.GetStream();
 
             //inicjalizacja połączenia przez klienta
