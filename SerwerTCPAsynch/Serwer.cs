@@ -11,11 +11,12 @@ namespace SerwerTCPAsynch
     /// <summary>
     /// Abstrakcyjna klasa Serwer
     /// </summary>
-    public abstract class Serwer <T> where T: ProtokolKomunikacyjny, new()
+    public abstract class Serwer<T> where T : ProtokolKomunikacyjny, new()
     {
         #region Pola
 
         IPAddress mojeIP;
+        BazaUzytkownikow uzytkownicy;
         int mojPort;
         int rozmiarBufora;
         byte[] bufor;
@@ -31,6 +32,8 @@ namespace SerwerTCPAsynch
         protected TcpClient TcpClient { get => klient; set => klient = value; }
 
         protected NetworkStream Strumien { get => strumien; set => strumien = value; }
+
+        public BazaUzytkownikow Uzytkownicy { get => uzytkownicy; set => uzytkownicy = value; }
 
         protected byte[] Bufor { get => bufor; set => bufor = value; }
 
@@ -48,6 +51,7 @@ namespace SerwerTCPAsynch
         {
             mojeIP = IPAddress.Parse("127.0.0.1");
             mojPort = 7777;
+            uzytkownicy = new BazaUzytkownikow();
             bufor = new byte[1024];
             rozmiarBufora = 1024;
             polaczony = false;
@@ -73,6 +77,7 @@ namespace SerwerTCPAsynch
 
             mojeIP = adresIP;
             mojPort = port;
+            uzytkownicy = new BazaUzytkownikow();
             bufor = new byte[1024];
             rozmiarBufora = 1024;
             polaczony = false;

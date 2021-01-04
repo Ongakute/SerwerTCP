@@ -18,6 +18,7 @@ namespace SerwerTCPAsynch
         /// </summary>
         /// <param name="strumien"></param>
         public delegate void watekTransmisji(NetworkStream strumien);
+        int ziarno;
         #endregion
 
         #region Konstruktor
@@ -66,12 +67,17 @@ namespace SerwerTCPAsynch
         protected override void rozpocznijTransmisje(NetworkStream strumien)
         {
             ProtokolSzyfrowania protokol = new T();
-            Logowanie logowanie = new Logowanie();
-           
+            var rand = new Random();
+            ziarno = rand.Next(1, 1000);
+            Logowanie logowanie = new Logowanie(Uzytkownicy, ziarno);
+
             String wiadomosc = null;
 
             //wiadomosc = odbieranieWiadomosci();
             //wysylanieWiadomosci("Witaj uzytkowniku! Aby rozpoczac nacisnij Enter");
+
+            wiadomosc = odbieranieWiadomosci();
+            wysylanieWiadomosci(ziarno.ToString());
 
             while (!logowanie.statusLogowania)
             {

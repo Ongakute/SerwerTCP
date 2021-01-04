@@ -4,3 +4,15 @@ C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csprojAssembl
 C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csproj.CoreCompileInputs.cache
 C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.exe
 C:\Users\Łukasz\Documents\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.pdb
+C:\Users\lewy\Desktop\SerwerTCP_zepsute\KlientTCP\bin\Debug\KlientTCP.exe
+C:\Users\lewy\Desktop\SerwerTCP_zepsute\KlientTCP\bin\Debug\KlientTCP.pdb
+C:\Users\lewy\Desktop\SerwerTCP_zepsute\KlientTCP\obj\Debug\KlientTCP.csprojAssemblyReference.cache
+C:\Users\lewy\Desktop\SerwerTCP_zepsute\KlientTCP\obj\Debug\KlientTCP.csproj.CoreCompileInputs.cache
+C:\Users\lewy\Desktop\SerwerTCP_zepsute\KlientTCP\obj\Debug\KlientTCP.exe
+C:\Users\lewy\Desktop\SerwerTCP_zepsute\KlientTCP\obj\Debug\KlientTCP.pdb
+C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\bin\Debug\KlientTCP.exe
+C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\bin\Debug\KlientTCP.pdb
+C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\obj\Debug\KlientTCP.csprojAssemblyReference.cache
+C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\obj\Debug\KlientTCP.csproj.CoreCompileInputs.cache
+C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\obj\Debug\KlientTCP.exe
+C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\obj\Debug\KlientTCP.pdb

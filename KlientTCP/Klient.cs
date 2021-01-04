@@ -12,6 +12,7 @@ namespace KlientTCP
 
         String ip;
         int port;
+        int ziarno;
         bool czyZalogowany = false;
         bool czyOpcja = false;
         Byte[] dane = new Byte[1024];
@@ -24,70 +25,13 @@ namespace KlientTCP
             this.ip = ip;
             this.port = port;
          }
-        
-        
-        
-        
 
-        /// <summary>
-        /// Metoda odpowiedzialna za połączenie klienta z serwerem.
-        /// </summary>
-        public void Polacz()
+
+
+
+        public void Polaczenie(NetworkStream strumien)
         {
-            
-            
-            klient.Connect(ip,port);
-            NetworkStream strumien = klient.GetStream();
 
-            //inicjalizacja połączenia przez klienta
-            dane = System.Text.Encoding.ASCII.GetBytes("ok.");
-            strumien.Write(dane, 0, dane.Length);
-            dane = new Byte[1024];
-
-
-            while (!czyZalogowany)
-            {
-                Odbior:
-                dane = new Byte[1024];
-                // odebranie danych od serwera.
-                int odczyt = strumien.Read(dane, 0, dane.Length);
-                wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
-                Console.WriteLine(wiadomosc);
-
-                //przypadek występuje po poprawnym zalogowaniu 
-                if (wiadomosc.Equals("Poprawnie zalogowano. \r\n"))
-                {
-                    czyZalogowany = true;
-                    dane = new Byte[1024];
-                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
-                    strumien.Write(dane, 0, dane.Length);
-                    Console.Clear();
-                    break;
-                }
-                else if(wiadomosc.Contains("Niepoprawny login"))
-                {
-                    dane = new Byte[1024];
-                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
-                    strumien.Write(dane, 0, dane.Length);
-                    goto Odbior;
-                }
-                
-
-                //czyszczenie bufora po odebraniu wiadomosci od serwera
-                dane = new Byte[1024];
-
-                odpowiedz = String.Empty;
-
-                //wysylanie wiadomosci
-                odpowiedz = Console.ReadLine();
-                if (odpowiedz.Equals("koniec"))
-                {
-                    break;
-                }
-
-                dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
-                strumien.Write(dane, 0, dane.Length);
-            }
 
             while (czyZalogowany)
             {
@@ -124,6 +68,95 @@ namespace KlientTCP
                 dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                 strumien.Write(dane, 0, dane.Length);
             }
+        }
+        /// <summary>
+        /// Metoda odpowiedzialna za połączenie klienta z serwerem.
+        /// </summary>
+        public void Polacz()
+        {
+            
+            
+            klient.Connect(ip,port);
+            NetworkStream strumien = klient.GetStream();
+
+            //inicjalizacja połączenia przez klienta
+            dane = System.Text.Encoding.ASCII.GetBytes("ok.");
+            strumien.Write(dane, 0, dane.Length);
+            dane = new Byte[1024];
+
+            int odczyt = strumien.Read(dane, 0, dane.Length);
+            wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
+            ziarno = Int32.Parse(wiadomosc);
+
+            dane = System.Text.Encoding.ASCII.GetBytes("ok.");
+            strumien.Write(dane, 0, dane.Length);
+            dane = new Byte[1024];
+
+            while (!czyZalogowany)
+            {
+                Odbior:
+                dane = new Byte[1024];
+                // odebranie danych od serwera.
+                odczyt = strumien.Read(dane, 0, dane.Length);
+                wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
+                Console.WriteLine(wiadomosc);
+
+                //przypadek występuje po poprawnym zalogowaniu 
+                if (wiadomosc.Equals("Poprawnie zalogowano. \r\n"))
+                {
+                    czyZalogowany = true;
+                    dane = new Byte[1024];
+                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                    strumien.Write(dane, 0, dane.Length);
+                    Console.Clear();
+                    break;
+                }
+                else if(wiadomosc.Contains("Niepoprawny login"))
+                {
+                    dane = new Byte[1024];
+                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                    strumien.Write(dane, 0, dane.Length);
+                    goto Odbior;
+                }
+                
+
+                //czyszczenie bufora po odebraniu wiadomosci od serwera
+                dane = new Byte[1024];
+
+                odpowiedz = String.Empty;
+
+                if (wiadomosc.Contains("haslo"))
+                {
+
+                    Console.WriteLine(wiadomosc);
+
+                    //odpowiedz = "ok";
+
+                    odpowiedz = Console.ReadLine();
+                    char[] tymczasowy = odpowiedz.ToCharArray();
+                    for (int i = 0; i < odpowiedz.Length; i++)
+                    {
+                        tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(odpowiedz, i) * ziarno);
+                    }
+                    odpowiedz = tymczasowy.ToString();
+                    dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
+                    strumien.Write(dane, 0, dane.Length);
+                    goto Odbior;
+                }
+
+                //wysylanie wiadomosci
+                odpowiedz = Console.ReadLine();
+                if (odpowiedz.Equals("koniec"))
+                {
+                    break;
+                }
+
+                dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
+                strumien.Write(dane, 0, dane.Length);
+            }
+
+            Polaczenie(strumien);
+
             // kończenie połączenia
             strumien.Close();
             klient.Close();

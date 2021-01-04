@@ -8,8 +8,9 @@ namespace SerwerTCPAsynch
 {
     class Logowanie
     {
-       
-        BazaUzytkownikow uzytkownicy;
+
+        BazaUzytkownikow baza;
+        int ziarno;
         public bool statusLogowania;
         bool czyLogin;
         bool czyHaslo;
@@ -22,12 +23,18 @@ namespace SerwerTCPAsynch
         /// </summary>
         public Logowanie()
         {
-            uzytkownicy = new BazaUzytkownikow();
+
+        }
+
+        public Logowanie(BazaUzytkownikow baza, int ziarno)
+        {
+            this.baza = baza;
+            this.ziarno = ziarno;
             statusLogowania = false;
             czyLogin = false;
             czyHaslo = false;
         }
-        
+
         public String utworzOdpowiedz(String wiadomosc)
         {
             String odpowiedz = null;
@@ -37,21 +44,21 @@ namespace SerwerTCPAsynch
             if (!czyLogin)
             {
                 odpowiedz = "Podaj login: ";
-                
+
                 czyLogin = true;
             }
-            else if(!czyHaslo)
+            else if (!czyHaslo)
             {
                 login = wiadomosc;
                 odpowiedz = "Podaj haslo: ";
-                
+
                 czyHaslo = true;
             }
             else
             {
                 haslo = wiadomosc;
                 zaloguj(login, haslo);
-                if(statusLogowania)
+                if (statusLogowania)
                 {
                     odpowiedz = "Poprawnie zalogowano. \r\n";
                 }
@@ -73,18 +80,25 @@ namespace SerwerTCPAsynch
         /// <param name="stream"></param>
         protected bool zaloguj(string login, string haslo)
         {
-            if (uzytkownicy.czyIstnieje(login))
+            if (baza.czyIstnieje(login))
             {
-                if (uzytkownicy.pobieraczHasla(login) == haslo)
+                string hasloTajne = baza.pobieraczHasla(login);
+                char[] tymczasowy = hasloTajne.ToCharArray();
+                for (int i = 0; i < hasloTajne.Length; i++)
+                {
+                    tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(hasloTajne, i) * ziarno);
+                }
+                hasloTajne = tymczasowy.ToString();
+                if (hasloTajne == haslo)
                 {
                     statusLogowania = true;
                     return true;
+
                 }
-                else return false;
+
             }
-            else return false;
 
+            return false;
         }
-
     }
 }
