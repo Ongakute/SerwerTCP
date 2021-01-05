@@ -8,6 +8,7 @@ namespace SerwerTCPAsynch
 {
     public class BazaUzytkownikow
     {
+
         SQLiteConnection sqlite_conn;
 
         /// <summary>
@@ -64,7 +65,6 @@ namespace SerwerTCPAsynch
                 if (!myreader.Equals(null))
                     wynik = myreader;
             }
-
             sqlite_conn.Close();
             return wynik;
         }
@@ -86,6 +86,7 @@ namespace SerwerTCPAsynch
         /// <returns></returns>
         public bool czyIstnieje(string login)
         {
+
             SQLiteDataReader sqlite_datareader;
             SQLiteCommand sqlite_cmd;
             sqlite_cmd = sqlite_conn.CreateCommand();
@@ -103,6 +104,11 @@ namespace SerwerTCPAsynch
             }
             sqlite_conn.Close();
 
+            /* if (uzytkownicy.ContainsKey(login))
+             {
+                 return true;
+             }
+             */
             return false;
         }
 

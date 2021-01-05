@@ -4,9 +4,10 @@ using System.Linq;
 using System.Net.Sockets;
 using System.Text;
 
+
 namespace SerwerTCPAsynch
 {
-    class Logowanie
+    public class Logowanie
     {
 
         BazaUzytkownikow baza;
@@ -18,14 +19,10 @@ namespace SerwerTCPAsynch
         String haslo = null;
 
 
+
         /// <summary>
         /// Konstruktor klasy logowanie
         /// </summary>
-        public Logowanie()
-        {
-
-        }
-
         public Logowanie(BazaUzytkownikow baza, int ziarno)
         {
             this.baza = baza;
@@ -93,12 +90,12 @@ namespace SerwerTCPAsynch
                 {
                     statusLogowania = true;
                     return true;
-
                 }
-
+                else return false;
             }
+            else return false;
 
-            return false;
         }
+
     }
 }

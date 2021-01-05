@@ -8,11 +8,11 @@ using System.Text;
 
 namespace SerwerTCPAsynch
 {
-    public class SerwerAsynchroniczny<T> : Serwer<T> where T: ProtokolSzyfrowania, new()
+    public class SerwerAsynchroniczny<T> : Serwer<T> where T : ProtokolSzyfrowania, new()
     {
         #region Zmienne
 
-        
+
         /// <summary>
         /// Delegatura watku dla każdego klienta
         /// </summary>
@@ -29,9 +29,9 @@ namespace SerwerTCPAsynch
         /// <param port="port"></param>
         public SerwerAsynchroniczny(IPAddress IP, int port) : base(IP, port)
         {
-       
+
         }
-        
+
         #endregion
 
         #region Funkcje
@@ -71,10 +71,9 @@ namespace SerwerTCPAsynch
             ziarno = rand.Next(1, 1000);
             Logowanie logowanie = new Logowanie(Uzytkownicy, ziarno);
 
-            String wiadomosc = null;
 
-            //wiadomosc = odbieranieWiadomosci();
-            //wysylanieWiadomosci("Witaj uzytkowniku! Aby rozpoczac nacisnij Enter");
+
+            String wiadomosc = null;
 
             wiadomosc = odbieranieWiadomosci();
             wysylanieWiadomosci(ziarno.ToString());
@@ -84,16 +83,16 @@ namespace SerwerTCPAsynch
                 wiadomosc = odbieranieWiadomosci();
                 wysylanieWiadomosci(logowanie.utworzOdpowiedz(wiadomosc));
                 //wiadomosc = "";
-            } 
+            }
 
-            
+
             Console.Write("Uzytkownik zalogowany \n\r");
             wiadomosc = odbieranieWiadomosci();
             wysylanieWiadomosci(protokol.inicjalizujPrace());
             while (true)
             {
-               wiadomosc = odbieranieWiadomosci();
-               wysylanieWiadomosci(protokol.utworzOdpowiedz(wiadomosc));
+                wiadomosc = odbieranieWiadomosci();
+                wysylanieWiadomosci(protokol.utworzOdpowiedz(wiadomosc));
             }
 
         }

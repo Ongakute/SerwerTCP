@@ -16,3 +16,9 @@ C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\obj\Debug\KlientTCP.csprojAss
 C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\obj\Debug\KlientTCP.csproj.CoreCompileInputs.cache
 C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\obj\Debug\KlientTCP.exe
 C:\Users\lewy\Desktop\SerwerTCP-master_1\KlientTCP\obj\Debug\KlientTCP.pdb
+C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\bin\Debug\KlientTCP.exe
+C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\bin\Debug\KlientTCP.pdb
+C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csprojAssemblyReference.cache
+C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csproj.CoreCompileInputs.cache
+C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.exe
+C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.pdb

@@ -24,7 +24,7 @@ namespace KlientTCP
         {
             this.ip = ip;
             this.port = port;
-         }
+        }
 
 
 
@@ -35,7 +35,7 @@ namespace KlientTCP
 
             while (czyZalogowany)
             {
-                Odbior:
+            Odbior:
                 dane = new Byte[1024];
                 odpowiedz = String.Empty;
 
@@ -74,9 +74,9 @@ namespace KlientTCP
         /// </summary>
         public void Polacz()
         {
-            
-            
-            klient.Connect(ip,port);
+
+
+            klient.Connect(ip, port);
             NetworkStream strumien = klient.GetStream();
 
             //inicjalizacja połączenia przez klienta
@@ -94,7 +94,7 @@ namespace KlientTCP
 
             while (!czyZalogowany)
             {
-                Odbior:
+            Odbior:
                 dane = new Byte[1024];
                 // odebranie danych od serwera.
                 odczyt = strumien.Read(dane, 0, dane.Length);
@@ -111,26 +111,23 @@ namespace KlientTCP
                     Console.Clear();
                     break;
                 }
-                else if(wiadomosc.Contains("Niepoprawny login"))
+                else if (wiadomosc.Contains("Niepoprawny login"))
                 {
                     dane = new Byte[1024];
                     dane = System.Text.Encoding.ASCII.GetBytes("ok");
                     strumien.Write(dane, 0, dane.Length);
                     goto Odbior;
                 }
-                
+
 
                 //czyszczenie bufora po odebraniu wiadomosci od serwera
                 dane = new Byte[1024];
 
                 odpowiedz = String.Empty;
 
+
                 if (wiadomosc.Contains("haslo"))
                 {
-
-                    Console.WriteLine(wiadomosc);
-
-                    //odpowiedz = "ok";
 
                     odpowiedz = Console.ReadLine();
                     char[] tymczasowy = odpowiedz.ToCharArray();
@@ -143,7 +140,6 @@ namespace KlientTCP
                     strumien.Write(dane, 0, dane.Length);
                     goto Odbior;
                 }
-
                 //wysylanie wiadomosci
                 odpowiedz = Console.ReadLine();
                 if (odpowiedz.Equals("koniec"))
@@ -166,4 +162,3 @@ namespace KlientTCP
         }
     }
 }
-
