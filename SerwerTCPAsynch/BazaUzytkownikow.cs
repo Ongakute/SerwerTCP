@@ -76,7 +76,12 @@ namespace SerwerTCPAsynch
         /// <param name="haslo"></param>
         public void dodajUzytkownika(string login, string haslo)
         {
-            //uzytkownicy.Add(login, haslo);
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = "INSERT INTO users ('login','haslo') VALUES ($login, $haslo)";
+            sqlite_cmd.Parameters.AddWithValue("$login", login);
+            sqlite_cmd.Parameters.AddWithValue("$haslo", haslo);
+            sqlite_cmd.ExecuteReader();
         }
 
         /// <summary>

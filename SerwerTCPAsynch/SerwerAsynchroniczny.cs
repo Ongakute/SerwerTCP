@@ -71,12 +71,60 @@ namespace SerwerTCPAsynch
             ziarno = rand.Next(1, 1000);
             Logowanie logowanie = new Logowanie(Uzytkownicy, ziarno);
 
-
-
             String wiadomosc = null;
 
             wiadomosc = odbieranieWiadomosci();
             wysylanieWiadomosci(ziarno.ToString());
+
+            wiadomosc = odbieranieWiadomosci();
+            while (true)
+            {
+                wiadomosc = null;
+                wysylanieWiadomosci("1. Zaloguj, 2. zarejestruj nowego uzytkownika");
+
+                wiadomosc = odbieranieWiadomosci();
+                Console.WriteLine(wiadomosc);
+                if (wiadomosc.Equals("1"))
+                {
+                    wysylanieWiadomosci("wybrano 1 - Logowanie:");
+                    //wiadomosc = odbieranieWiadomosci();
+                    break;
+
+                }
+                else if (wiadomosc.Equals("2"))
+                {
+                    wysylanieWiadomosci("wybrano 2 - Rejestracja\nPodaj Login:");
+                    string login_nowy = odbieranieWiadomosci();
+                    wysylanieWiadomosci("haslo");
+                    string haslo_nowe = odbieranieWiadomosci();
+                    wysylanieWiadomosci("powtorz haslo");
+                    string haslo_nowe2 = odbieranieWiadomosci();
+
+                    if(haslo_nowe == haslo_nowe2)
+                    {
+                        Console.WriteLine("nowe haslo" + haslo_nowe + "\n");
+                        if(logowanie.zarejestruj(login_nowy, haslo_nowe))
+                        {
+                            wysylanieWiadomosci("Poprawnie zarejestrowano nowego uzytkownika (ENTER) \n");
+                            
+                        } else
+                        {
+                            wysylanieWiadomosci("Problem z dodaniem uzytkownika (ENTER) \n");
+                        }
+
+
+                    } else
+                    {
+                        //Console.WriteLine("Hasla nie są tozsame - sprobuj ponownie \n");
+                        wysylanieWiadomosci("Hasla nie sa tozsame - sprobuj ponownie ( ENTER ) \n");
+                    }
+                    
+                }
+                else
+                {
+                    wysylanieWiadomosci("dokonano blednego wyboru - sprubuj raz jeszcze \n 1. Zaloguj, 2. zarejestruj nowego uzytkownika\n");
+                }
+            }
 
             while (!logowanie.statusLogowania)
             {

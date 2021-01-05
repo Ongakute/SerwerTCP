@@ -18,8 +18,6 @@ namespace SerwerTCPAsynch
         String login = null;
         String haslo = null;
 
-
-
         /// <summary>
         /// Konstruktor klasy logowanie
         /// </summary>
@@ -35,20 +33,16 @@ namespace SerwerTCPAsynch
         public String utworzOdpowiedz(String wiadomosc)
         {
             String odpowiedz = null;
-            ;
-
-
+          
             if (!czyLogin)
             {
                 odpowiedz = "Podaj login: ";
-
                 czyLogin = true;
             }
             else if (!czyHaslo)
             {
                 login = wiadomosc;
                 odpowiedz = "Podaj haslo: ";
-
                 czyHaslo = true;
             }
             else
@@ -90,7 +84,7 @@ namespace SerwerTCPAsynch
                     //tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(hasloTajne, i) * ziarno);
                 }
                 //hasloTajne = tymczasowy.ToString();
-                hasloTajne = string.Join("", haslo_zahaszowane);
+                hasloTajne = string.Join("|", haslo_zahaszowane);
                 if (hasloTajne == haslo)
                 {
                     statusLogowania = true;
@@ -100,6 +94,36 @@ namespace SerwerTCPAsynch
             }
             else return false;
 
+        }
+
+        public bool zarejestruj(string login, string haslo)
+        {
+            string[] subs = haslo.Split('|');
+            string haslo_jawne = "";
+            int a = 0;
+            for(int i=0; i < subs.Length; i++)
+            {
+                //haslo_jawne += subs[i];
+                a = Int32.Parse(subs[i]);
+                a = a / ziarno;
+                haslo_jawne += (char)a;
+                //Console.WriteLine((char)a);
+            }
+            Console.WriteLine(haslo_jawne);
+
+            if (baza.czyIstnieje(login))
+            {
+                Console.WriteLine("błąd - uzytkownik istnieje");
+                return false;
+            } else
+            {
+                Console.WriteLine("bangla");
+                baza.dodajUzytkownika(login, haslo_jawne);
+                return true;
+            }
+            
+
+            
         }
 
     }

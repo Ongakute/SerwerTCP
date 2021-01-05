@@ -75,10 +75,8 @@ namespace KlientTCP
         public void Polacz()
         {
 
-
             klient.Connect(ip, port);
             NetworkStream strumien = klient.GetStream();
-
             //inicjalizacja połączenia przez klienta
             dane = System.Text.Encoding.ASCII.GetBytes("ok.");
             strumien.Write(dane, 0, dane.Length);
@@ -91,6 +89,8 @@ namespace KlientTCP
             dane = System.Text.Encoding.ASCII.GetBytes("ok.");
             strumien.Write(dane, 0, dane.Length);
             dane = new Byte[1024];
+
+
 
             while (!czyZalogowany)
             {
@@ -122,11 +122,10 @@ namespace KlientTCP
 
                 //czyszczenie bufora po odebraniu wiadomosci od serwera
                 dane = new Byte[1024];
-
                 odpowiedz = String.Empty;
 
-
-                if (wiadomosc.Contains("haslo"))
+                // przekazanie hasła z ziarnem dla 
+                if (wiadomosc.Contains("haslo") || wiadomosc.Contains("powtorz haslo"))
                 {
 
                     odpowiedz = Console.ReadLine();
@@ -140,11 +139,13 @@ namespace KlientTCP
                         //tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(odpowiedz, i) * ziarno);
                     }
                     //odpowiedz = tymczasowy.ToString();
-                    odpowiedz = string.Join("", haslo_zahaszowane);
+                    odpowiedz = string.Join("|", haslo_zahaszowane);
                     dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                     strumien.Write(dane, 0, dane.Length);
                     goto Odbior;
                 }
+
+
                 //wysylanie wiadomosci
                 odpowiedz = Console.ReadLine();
                 if (odpowiedz.Equals("koniec"))
