@@ -80,12 +80,17 @@ namespace SerwerTCPAsynch
             if (baza.czyIstnieje(login))
             {
                 string hasloTajne = baza.pobieraczHasla(login);
-                char[] tymczasowy = hasloTajne.ToCharArray();
+                //char[] tymczasowy = hasloTajne.ToCharArray();
+                List<int> haslo_zahaszowane = new List<int>();
+                int wartosc_znaku;
                 for (int i = 0; i < hasloTajne.Length; i++)
                 {
-                    tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(hasloTajne, i) * ziarno);
+                    wartosc_znaku = Char.ConvertToUtf32(hasloTajne, i) * ziarno;
+                    haslo_zahaszowane.Add(wartosc_znaku);
+                    //tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(hasloTajne, i) * ziarno);
                 }
-                hasloTajne = tymczasowy.ToString();
+                //hasloTajne = tymczasowy.ToString();
+                hasloTajne = string.Join("", haslo_zahaszowane);
                 if (hasloTajne == haslo)
                 {
                     statusLogowania = true;

@@ -130,12 +130,17 @@ namespace KlientTCP
                 {
 
                     odpowiedz = Console.ReadLine();
-                    char[] tymczasowy = odpowiedz.ToCharArray();
+                    //char[] tymczasowy = odpowiedz.ToCharArray();
+                    List<int> haslo_zahaszowane = new List<int>();
+                    int wartosc_znaku;
                     for (int i = 0; i < odpowiedz.Length; i++)
                     {
-                        tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(odpowiedz, i) * ziarno);
+                        wartosc_znaku = Char.ConvertToUtf32(odpowiedz, i) * ziarno;
+                        haslo_zahaszowane.Add(wartosc_znaku);
+                        //tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(odpowiedz, i) * ziarno);
                     }
-                    odpowiedz = tymczasowy.ToString();
+                    //odpowiedz = tymczasowy.ToString();
+                    odpowiedz = string.Join("", haslo_zahaszowane);
                     dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                     strumien.Write(dane, 0, dane.Length);
                     goto Odbior;
