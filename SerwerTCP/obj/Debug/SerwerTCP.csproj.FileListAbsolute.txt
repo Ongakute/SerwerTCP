@@ -73,3 +73,22 @@ C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\SerwerTCP\obj\Debug\Serwe
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CopyComplete
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.exe
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.pdb
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCP.exe.config
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCP.exe
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCP.pdb
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\EntityFramework.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCPAsynch.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\System.Data.SQLite.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCPAsynch.pdb
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\SerwerTCPAsynch.dll.config
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\EntityFramework.xml
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\bin\Debug\System.Data.SQLite.xml
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csprojAssemblyReference.cache
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.csproj.CopyComplete
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.exe
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCP\obj\Debug\SerwerTCP.pdb

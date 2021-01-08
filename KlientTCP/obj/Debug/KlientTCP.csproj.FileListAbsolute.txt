@@ -22,3 +22,9 @@ C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\obj\Debug\Klien
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csproj.CoreCompileInputs.cache
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.exe
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.pdb
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\KlientTCP\bin\Debug\KlientTCP.exe
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\KlientTCP\bin\Debug\KlientTCP.pdb
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csprojAssemblyReference.cache
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.exe
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\KlientTCP\obj\Debug\KlientTCP.pdb

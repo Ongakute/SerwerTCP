@@ -15,6 +15,7 @@ namespace KlientTCP
         int ziarno;
         bool czyZalogowany = false;
         bool czyOpcja = false;
+        bool czyMenu = false;
         Byte[] dane = new Byte[1024];
         String wiadomosc = String.Empty;
         String odpowiedz = String.Empty;
@@ -46,9 +47,6 @@ namespace KlientTCP
                 //skończona iteracja działania aplikacji obsługiwanej przez serwer
                 if (wiadomosc.Contains(":/"))
                 {
-
-                    Console.WriteLine(wiadomosc);
-
                     odpowiedz = "ok";
                     dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                     strumien.Write(dane, 0, dane.Length);
@@ -90,7 +88,47 @@ namespace KlientTCP
             strumien.Write(dane, 0, dane.Length);
             dane = new Byte[1024];
 
+            while(!czyMenu)
+            {
+                dane = new Byte[1024];
+                // odebranie danych od serwera.
+                odczyt = strumien.Read(dane, 0, dane.Length);
+                wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
+                Console.WriteLine(wiadomosc);
 
+                if(wiadomosc == "Wybrano 1 - Logowanie:")
+                {
+                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                    strumien.Write(dane, 0, dane.Length);
+                    czyMenu = true;
+                    Console.Clear();
+                    break;
+                }
+                else if(wiadomosc.Contains("Wybrano 2 - Rejestracja"))
+                {
+                    odpowiedz = Console.ReadLine();
+                    dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
+                    strumien.Write(dane, 0, dane.Length);
+                    Console.Clear();
+                }
+                else if (wiadomosc.Contains("Poprawnie zarejestrowano"))
+                {
+                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                    strumien.Write(dane, 0, dane.Length);
+                    czyMenu = true;
+                    break;
+                }
+
+
+                odpowiedz = Console.ReadLine();
+                if (odpowiedz.Equals("koniec"))
+                {
+                    break;
+                }
+
+                dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
+                strumien.Write(dane, 0, dane.Length);
+            }
 
             while (!czyZalogowany)
             {

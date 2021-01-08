@@ -86,14 +86,14 @@ namespace SerwerTCPAsynch
                 Console.WriteLine(wiadomosc);
                 if (wiadomosc.Equals("1"))
                 {
-                    wysylanieWiadomosci("wybrano 1 - Logowanie:");
+                    wysylanieWiadomosci("Wybrano 1 - Logowanie:");
                     //wiadomosc = odbieranieWiadomosci();
                     break;
 
                 }
                 else if (wiadomosc.Equals("2"))
                 {
-                    wysylanieWiadomosci("wybrano 2 - Rejestracja\nPodaj Login:");
+                    wysylanieWiadomosci("Wybrano 2 - Rejestracja\nPodaj Login:");
                     string login_nowy = odbieranieWiadomosci();
                     wysylanieWiadomosci("haslo");
                     string haslo_nowe = odbieranieWiadomosci();
@@ -115,14 +115,13 @@ namespace SerwerTCPAsynch
 
                     } else
                     {
-                        //Console.WriteLine("Hasla nie są tozsame - sprobuj ponownie \n");
                         wysylanieWiadomosci("Hasla nie sa tozsame - sprobuj ponownie ( ENTER ) \n");
                     }
                     
                 }
                 else
                 {
-                    wysylanieWiadomosci("dokonano blednego wyboru - sprubuj raz jeszcze \n 1. Zaloguj, 2. zarejestruj nowego uzytkownika\n");
+                    wysylanieWiadomosci("dokonano blednego wyboru - sprobuj raz jeszcze \n 1. Zaloguj, 2. zarejestruj nowego uzytkownika\n");
                 }
             }
 

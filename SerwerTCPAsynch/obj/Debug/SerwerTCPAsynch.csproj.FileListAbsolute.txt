@@ -58,3 +58,19 @@ C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\SerwerTCPAsynch\obj\Debug
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csproj.CopyComplete
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.dll
 C:\Users\lewy\Desktop\politechnika_s5\io_lab\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.pdb
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.dll.config
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\SerwerTCPAsynch.pdb
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\EntityFramework.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\System.Data.SQLite.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\System.Data.SQLite.EF6.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\System.Data.SQLite.Linq.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\EntityFramework.xml
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\bin\Debug\System.Data.SQLite.xml
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csprojAssemblyReference.cache
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csproj.CoreCompileInputs.cache
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.csproj.CopyComplete
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.dll
+C:\Users\Łukasz\Documents\Nowy folder\SerwerTCP\SerwerTCPAsynch\obj\Debug\SerwerTCPAsynch.pdb

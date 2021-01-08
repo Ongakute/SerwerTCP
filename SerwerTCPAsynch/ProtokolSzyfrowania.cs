@@ -74,10 +74,10 @@ namespace SerwerTCPAsynch
                     {
                         klucz = wiadomosc;
                         if (trybPracy == 1)
-                            odpowiedz = "Zaszyfrowany tekst " + szyfrowanie.tworzenieSzyfru(tekst, klucz) + ":/\r\n";
+                            odpowiedz = "Zaszyfrowany tekst " + szyfrowanie.tworzenieSzyfru(tekst, klucz) + " :/ \r\n";
 
                         else
-                            odpowiedz = szyfrowanie.deszyfracja(tekst, klucz) + ":/\r\n";
+                            odpowiedz = szyfrowanie.deszyfracja(tekst, klucz) + " :/ \r\n";
                         statusPracy = 0;
                         trybPracy = 0;
                         status = false;
