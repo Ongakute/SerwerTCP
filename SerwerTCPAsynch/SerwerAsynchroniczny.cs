@@ -77,53 +77,9 @@ namespace SerwerTCPAsynch
             wysylanieWiadomosci(ziarno.ToString());
 
             wiadomosc = odbieranieWiadomosci();
-            while (true)
-            {
-                wiadomosc = null;
-                wysylanieWiadomosci("1. Zaloguj, 2. zarejestruj nowego uzytkownika");
+            wiadomosc = null;
+            wysylanieWiadomosci("1. Zaloguj, 2. zarejestruj nowego uzytkownika");
 
-                wiadomosc = odbieranieWiadomosci();
-                Console.WriteLine(wiadomosc);
-                if (wiadomosc.Equals("1"))
-                {
-                    wysylanieWiadomosci("Wybrano 1 - Logowanie:");
-                    //wiadomosc = odbieranieWiadomosci();
-                    break;
-
-                }
-                else if (wiadomosc.Equals("2"))
-                {
-                    wysylanieWiadomosci("Wybrano 2 - Rejestracja\nPodaj Login:");
-                    string login_nowy = odbieranieWiadomosci();
-                    wysylanieWiadomosci("haslo");
-                    string haslo_nowe = odbieranieWiadomosci();
-                    wysylanieWiadomosci("powtorz haslo");
-                    string haslo_nowe2 = odbieranieWiadomosci();
-
-                    if(haslo_nowe == haslo_nowe2)
-                    {
-                        Console.WriteLine("nowe haslo" + haslo_nowe + "\n");
-                        if(logowanie.zarejestruj(login_nowy, haslo_nowe))
-                        {
-                            wysylanieWiadomosci("Poprawnie zarejestrowano nowego uzytkownika (ENTER) \n");
-                            
-                        } else
-                        {
-                            wysylanieWiadomosci("Problem z dodaniem uzytkownika (ENTER) \n");
-                        }
-
-
-                    } else
-                    {
-                        wysylanieWiadomosci("Hasla nie sa tozsame - sprobuj ponownie ( ENTER ) \n");
-                    }
-                    
-                }
-                else
-                {
-                    wysylanieWiadomosci("dokonano blednego wyboru - sprobuj raz jeszcze \n 1. Zaloguj, 2. zarejestruj nowego uzytkownika\n");
-                }
-            }
 
             while (!logowanie.statusLogowania)
             {
@@ -170,12 +126,16 @@ namespace SerwerTCPAsynch
         /// <returns></returns>
         private string odbieranieWiadomosci()
         {
-            string wiadomosc = "";
+            String wiadomosc = null;
             try
             {
                 Bufor = new byte[RozmiarBufora];
                 int rozmiarWiadomosci = Strumien.Read(Bufor, 0, RozmiarBufora);
-
+                if(rozmiarWiadomosci == 0)
+                {
+                    wiadomosc = "ok.";
+                    return wiadomosc;
+                }
                 wiadomosc = dekodowanieWiadomosci(rozmiarWiadomosci);
                 Array.Clear(Bufor, 0, RozmiarBufora);
             }

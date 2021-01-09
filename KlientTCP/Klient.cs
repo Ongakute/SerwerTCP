@@ -13,8 +13,8 @@ namespace KlientTCP
         String ip;
         int port;
         int ziarno;
-        bool czyZalogowany = false;
-        bool czyOpcja = false;
+        bool czyZalogowany = true;
+        bool czyKoniec = false;
         bool czyMenu = false;
         Byte[] dane = new Byte[1024];
         String wiadomosc = String.Empty;
@@ -27,12 +27,8 @@ namespace KlientTCP
             this.port = port;
         }
 
-
-
-
         public void Polaczenie(NetworkStream strumien)
         {
-
 
             while (czyZalogowany)
             {
@@ -60,96 +56,54 @@ namespace KlientTCP
 
                 if (odpowiedz.Equals("koniec"))
                 {
+                    strumien.Close();
+                    czyKoniec = true;
                     break;
+                }
+                else if (odpowiedz == "")
+                {
+                    odpowiedz = "ok";
                 }
 
                 dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                 strumien.Write(dane, 0, dane.Length);
             }
         }
-        /// <summary>
-        /// Metoda odpowiedzialna za połączenie klienta z serwerem.
-        /// </summary>
-        public void Polacz()
+
+        void PanelLogowania(NetworkStream strumien)
         {
-
-            klient.Connect(ip, port);
-            NetworkStream strumien = klient.GetStream();
-            //inicjalizacja połączenia przez klienta
-            dane = System.Text.Encoding.ASCII.GetBytes("ok.");
-            strumien.Write(dane, 0, dane.Length);
-            dane = new Byte[1024];
-
-            int odczyt = strumien.Read(dane, 0, dane.Length);
-            wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
-            ziarno = Int32.Parse(wiadomosc);
-
-            dane = System.Text.Encoding.ASCII.GetBytes("ok.");
-            strumien.Write(dane, 0, dane.Length);
-            dane = new Byte[1024];
-
-            while(!czyMenu)
-            {
-                dane = new Byte[1024];
-                // odebranie danych od serwera.
-                odczyt = strumien.Read(dane, 0, dane.Length);
-                wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
-                Console.WriteLine(wiadomosc);
-
-                if(wiadomosc == "Wybrano 1 - Logowanie:")
-                {
-                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
-                    strumien.Write(dane, 0, dane.Length);
-                    czyMenu = true;
-                    Console.Clear();
-                    break;
-                }
-                else if(wiadomosc.Contains("Wybrano 2 - Rejestracja"))
-                {
-                    odpowiedz = Console.ReadLine();
-                    dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
-                    strumien.Write(dane, 0, dane.Length);
-                    Console.Clear();
-                }
-                else if (wiadomosc.Contains("Poprawnie zarejestrowano"))
-                {
-                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
-                    strumien.Write(dane, 0, dane.Length);
-                    czyMenu = true;
-                    break;
-                }
-
-
-                odpowiedz = Console.ReadLine();
-                if (odpowiedz.Equals("koniec"))
-                {
-                    break;
-                }
-
-                dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
-                strumien.Write(dane, 0, dane.Length);
-            }
-
+            int odczyt;
             while (!czyZalogowany)
             {
-            Odbior:
+                Odbior:
                 dane = new Byte[1024];
                 // odebranie danych od serwera.
                 odczyt = strumien.Read(dane, 0, dane.Length);
                 wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
                 Console.WriteLine(wiadomosc);
 
-                //przypadek występuje po poprawnym zalogowaniu 
-                if (wiadomosc.Equals("Poprawnie zalogowano. \r\n"))
+                //przypadek występuje po poprawnym zalogowaniu lub poprawnym dodaniu użytkownika
+                if (wiadomosc.Contains("Poprawnie"))
                 {
+                    if (wiadomosc.Contains("nowego uzytkownika"))
+                    {
+                        czyZalogowany = true;
+                        czyMenu = false;
+                        dane = new Byte[1024];
+                        dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                        strumien.Write(dane, 0, dane.Length);
+                        Console.Clear();
+                        break;
+                    }
                     czyZalogowany = true;
                     dane = new Byte[1024];
                     dane = System.Text.Encoding.ASCII.GetBytes("ok");
                     strumien.Write(dane, 0, dane.Length);
                     Console.Clear();
                     break;
+
                 }
-                else if (wiadomosc.Contains("Niepoprawny login"))
+                else if (wiadomosc.Contains("sprobuj ponownie"))
                 {
                     dane = new Byte[1024];
                     dane = System.Text.Encoding.ASCII.GetBytes("ok");
@@ -163,10 +117,14 @@ namespace KlientTCP
                 odpowiedz = String.Empty;
 
                 // przekazanie hasła z ziarnem dla 
-                if (wiadomosc.Contains("haslo") || wiadomosc.Contains("powtorz haslo"))
+                if (wiadomosc.Contains("haslo"))
                 {
 
                     odpowiedz = Console.ReadLine();
+                    if (odpowiedz == "")
+                    {
+                        odpowiedz = "ok";
+                    }
                     //char[] tymczasowy = odpowiedz.ToCharArray();
                     List<int> haslo_zahaszowane = new List<int>();
                     int wartosc_znaku;
@@ -188,20 +146,95 @@ namespace KlientTCP
                 odpowiedz = Console.ReadLine();
                 if (odpowiedz.Equals("koniec"))
                 {
+                    strumien.Close();
+                    czyKoniec = true;
                     break;
+                }
+                else if (odpowiedz == "")
+                {
+                    odpowiedz = "ok";
+                }
+
+                dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
+                strumien.Write(dane, 0, dane.Length);
+                
+            }
+            
+        }
+
+        void Menu(NetworkStream strumien)
+        {
+            int odczyt;
+            while (!czyMenu)
+            {
+                dane = new Byte[1024];
+                // odebranie danych od serwera.
+                odczyt = strumien.Read(dane, 0, dane.Length);
+                wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
+                Console.WriteLine(wiadomosc);
+
+                if (wiadomosc.Contains("Wybrano"))
+                {
+                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                    strumien.Write(dane, 0, dane.Length);
+                    czyMenu = true;
+                    czyZalogowany = false;
+
+                    Console.Clear();
+                    break;
+                }
+
+                odpowiedz = Console.ReadLine();
+                if (odpowiedz.Equals("koniec"))
+                {
+                    strumien.Close();
+                    czyKoniec = true;
+                    break;
+                }
+                else if(odpowiedz == "")
+                {
+                    odpowiedz = "ok";
                 }
 
                 dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                 strumien.Write(dane, 0, dane.Length);
             }
+        }
 
-            Polaczenie(strumien);
+        /// <summary>
+        /// Metoda odpowiedzialna za połączenie klienta z serwerem.
+        /// </summary>
+        public void Polacz()
+        {
+
+            klient.Connect(ip, port);
+            NetworkStream strumien = klient.GetStream();
+            //inicjalizacja połączenia przez klienta
+            dane = System.Text.Encoding.ASCII.GetBytes("ok.");
+            strumien.Write(dane, 0, dane.Length);
+            dane = new Byte[1024];
+
+            int odczyt = strumien.Read(dane, 0, dane.Length);
+            wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
+            ziarno = Int32.Parse(wiadomosc);
+
+            dane = System.Text.Encoding.ASCII.GetBytes("ok.");
+            strumien.Write(dane, 0, dane.Length);
+            dane = new Byte[1024];
+
+            while(!czyKoniec)
+            {
+                Menu(strumien);
+
+                PanelLogowania(strumien);
+
+                Polaczenie(strumien);
+            }
 
             // kończenie połączenia
-            strumien.Close();
             klient.Close();
 
-            Console.WriteLine("\n Nacisnij Enter aby zakonczyc...");
+            Console.WriteLine("Nacisnij Enter aby zakonczyc...");
             Console.Read();
         }
     }
