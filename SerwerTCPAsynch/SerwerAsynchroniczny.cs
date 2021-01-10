@@ -89,15 +89,29 @@ namespace SerwerTCPAsynch
             }
 
 
-            Console.Write("Uzytkownik zalogowany \n\r");
-            wiadomosc = odbieranieWiadomosci();
-            wysylanieWiadomosci(protokol.inicjalizujPrace());
-            while (true)
+            while (logowanie.czyZalogowany)
             {
-                wiadomosc = odbieranieWiadomosci();
-                wysylanieWiadomosci(protokol.utworzOdpowiedz(wiadomosc));
-            }
+                Console.Write("Uzytkownik zalogowany \n\r");
 
+                wiadomosc = odbieranieWiadomosci();
+                wysylanieWiadomosci("1. Przejdz do aplikacji, 2. Zmiana hasla ");
+
+                do
+                {
+                    wiadomosc = odbieranieWiadomosci();
+                    wysylanieWiadomosci(logowanie.utworzOdpowiedz(wiadomosc));
+                }
+                while (logowanie.czyZmianaHasla);
+
+                wiadomosc = odbieranieWiadomosci();
+                wysylanieWiadomosci(protokol.inicjalizujPrace());
+                while (true)
+                {
+                    wiadomosc = odbieranieWiadomosci();
+                    wysylanieWiadomosci(protokol.utworzOdpowiedz(wiadomosc));
+                }
+            }
+            
         }
 
         /// <summary>
@@ -138,6 +152,10 @@ namespace SerwerTCPAsynch
                 }
                 wiadomosc = dekodowanieWiadomosci(rozmiarWiadomosci);
                 Array.Clear(Bufor, 0, RozmiarBufora);
+                if(wiadomosc == "koniec")
+                {
+                    Strumien.Close();
+                }
             }
             catch (IOException e)
             {

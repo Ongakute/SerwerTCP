@@ -13,6 +13,7 @@ namespace KlientTCP
         String ip;
         int port;
         int ziarno;
+        bool czyZmianaHasla = false;
         bool czyZalogowany = true;
         bool czyKoniec = false;
         bool czyMenu = false;
@@ -93,7 +94,6 @@ namespace KlientTCP
                         dane = System.Text.Encoding.ASCII.GetBytes("ok");
                         strumien.Write(dane, 0, dane.Length);
                         Console.Clear();
-                        break;
                     }
                     czyZalogowany = true;
                     dane = new Byte[1024];
@@ -148,7 +148,8 @@ namespace KlientTCP
                 {
                     strumien.Close();
                     czyKoniec = true;
-                    break;
+                    return;
+                    
                 }
                 else if (odpowiedz == "")
                 {
@@ -159,7 +160,63 @@ namespace KlientTCP
                 strumien.Write(dane, 0, dane.Length);
                 
             }
-            
+
+            while(!czyZmianaHasla)
+            {
+                Odbior:
+                dane = new Byte[1024];
+                // odebranie danych od serwera.
+                odczyt = strumien.Read(dane, 0, dane.Length);
+                wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
+                Console.WriteLine(wiadomosc);
+
+                if(wiadomosc.Contains("Wybrano 1: Przejdz do aplikacji"))
+                {
+                    czyZmianaHasla = true;
+                    dane = new Byte[1024];
+                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                    strumien.Write(dane, 0, dane.Length);
+                    break;
+                }
+                else if(wiadomosc.Contains("Poprawnie zmieniono haslo"))
+                {
+                    czyZmianaHasla = true;
+                    dane = new Byte[1024];
+                    dane = System.Text.Encoding.ASCII.GetBytes("ok");
+                    strumien.Write(dane, 0, dane.Length);
+                    break;
+                }
+                // przekazanie hasła z ziarnem dla 
+                else if (wiadomosc.Contains("haslo"))
+                {
+
+                    odpowiedz = Console.ReadLine();
+                    if (odpowiedz == "")
+                    {
+                        odpowiedz = "ok";
+                    }
+                    //char[] tymczasowy = odpowiedz.ToCharArray();
+                    List<int> haslo_zahaszowane = new List<int>();
+                    int wartosc_znaku;
+                    for (int i = 0; i < odpowiedz.Length; i++)
+                    {
+                        wartosc_znaku = Char.ConvertToUtf32(odpowiedz, i) * ziarno;
+                        haslo_zahaszowane.Add(wartosc_znaku);
+                        //tymczasowy[i] = Convert.ToChar(Char.ConvertToUtf32(odpowiedz, i) * ziarno);
+                    }
+                    //odpowiedz = tymczasowy.ToString();
+                    odpowiedz = string.Join("|", haslo_zahaszowane);
+                    dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
+                    strumien.Write(dane, 0, dane.Length);
+                    goto Odbior;
+                }
+                odpowiedz = Console.ReadLine();
+                dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
+                strumien.Write(dane, 0, dane.Length);
+
+            }
+
+   
         }
 
         void Menu(NetworkStream strumien)
@@ -187,6 +244,8 @@ namespace KlientTCP
                 odpowiedz = Console.ReadLine();
                 if (odpowiedz.Equals("koniec"))
                 {
+                    dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
+                    strumien.Write(dane, 0, dane.Length);
                     strumien.Close();
                     czyKoniec = true;
                     break;

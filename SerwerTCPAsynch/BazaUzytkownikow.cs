@@ -84,6 +84,16 @@ namespace SerwerTCPAsynch
             sqlite_cmd.ExecuteReader();
         }
 
+        public void zmianaHasla(String login, String noweHaslo)
+        {
+            SQLiteCommand sqlite_cmd;
+            sqlite_cmd = sqlite_conn.CreateCommand();
+            sqlite_cmd.CommandText = "UPDATE users SET haslo = $noweHaslo WHERE login = $login";
+            sqlite_cmd.Parameters.AddWithValue("$login", login);
+            sqlite_cmd.Parameters.AddWithValue("$noweHaslo", noweHaslo);
+            sqlite_cmd.ExecuteReader();
+        }
+
         /// <summary>
         /// Funkcja sprawdzająca czy istnieje uzytkownik o danym loginie
         /// </summary>

@@ -13,12 +13,16 @@ namespace SerwerTCPAsynch
         BazaUzytkownikow baza;
         int ziarno;
         public bool statusLogowania;
+        public bool czyZalogowany;
         bool czyLogin;
         bool czyHaslo;
         bool czyMenu;
         bool czyLogowanie;
         bool czyRejestracja;
         bool czyPonowneHaslo;
+        bool czyNoweHaslo;
+        bool czyStareHaslo;
+        public bool czyZmianaHasla;
         String login = null;
         String haslo = null;
         String nowyLogin = null;
@@ -39,6 +43,10 @@ namespace SerwerTCPAsynch
             czyLogowanie = true;
             czyPonowneHaslo = false;
             czyRejestracja = true;
+            czyZmianaHasla = false;
+            czyZalogowany = false;
+            czyNoweHaslo = false;
+            czyStareHaslo = false;
         }
 
         public String utworzOdpowiedz(String wiadomosc)
@@ -61,7 +69,7 @@ namespace SerwerTCPAsynch
                 }
                 else
                 {
-                    odpowiedz = "Dokonano blednego wyboru - sprobuj raz jeszcze \n s1. Zaloguj, 2. zarejestruj nowego uzytkownika\n";
+                    odpowiedz = "1. Zaloguj sie, 2. zarejestruj nowego uzytkownika\n";
                     czyMenu = false;
                 }
             }
@@ -84,6 +92,10 @@ namespace SerwerTCPAsynch
                     statusLogowania = zaloguj(login, haslo);
                     if (zaloguj(login, haslo))
                     {
+                        czyZalogowany = true;
+                        czyHaslo = false;
+                        czyPonowneHaslo = false;
+                        czyLogowanie = true;
                         odpowiedz = "Poprawnie zalogowano. \r\n";
                     }
                     else
@@ -120,8 +132,11 @@ namespace SerwerTCPAsynch
                     {
                         if (zarejestruj(nowyLogin,noweHaslo))
                         {
-                            odpowiedz = "Poprawnie zarejestrowano nowego uzytkownika (ENTER) \n";
+                            odpowiedz = "Poprawnie zarejestrowano nowego uzytkownika \n";
+                            czyZalogowany = true;
                             statusLogowania = true;
+                            czyHaslo = false;
+                            czyPonowneHaslo = false;
 
                         }
                         else
@@ -147,6 +162,58 @@ namespace SerwerTCPAsynch
                         noweHaslo = null;
                     }
                 }
+            }
+            if(czyZalogowany)
+            {
+
+                if (wiadomosc == "1")
+                {
+                    odpowiedz = "Wybrano 1 - Przejscie do aplikacji. ";
+                    czyZmianaHasla = false;
+                }
+                else if (wiadomosc == "2")
+                {
+                    odpowiedz = "Wybrano 2 - Zmiana hasla. \n Podaj obecne haslo:";
+                    czyZmianaHasla = true;
+                }
+                else if(czyZmianaHasla)
+                {
+                    if(!czyStareHaslo)
+                    {
+                        haslo = wiadomosc;
+                        String stareHaslo = dekodowanieHasla(haslo);
+                        if (stareHaslo == baza.pobieraczHasla(login))
+                        {
+                            czyStareHaslo = true;
+                            odpowiedz = "Podaj nowe haslo: ";
+                        }
+                        else
+                        {
+                            odpowiedz = "Niepoprawne haslo, sprobuj ponownie: ";
+                        }
+                    }
+                    else if(!czyNoweHaslo)
+                    {
+   
+                        if(wiadomosc == haslo)
+                        {
+                            odpowiedz = "Nowe haslo nie moze byc takie samo jak stare. Podaj inne haslo: ";
+                        }
+                        else
+                        {
+                            noweHaslo = wiadomosc;
+                            czyNoweHaslo = true;
+                            odpowiedz = "Powtorz nowe haslo: ";
+                        }
+                    }
+                    else
+                    {
+                        zmianaHasla(noweHaslo);
+                        odpowiedz = "Poprawnie zmieniono haslo.";
+                        czyZmianaHasla = false;
+                    }
+                }
+
             }
 
             return odpowiedz;
@@ -185,18 +252,8 @@ namespace SerwerTCPAsynch
 
         public bool zarejestruj(String login, String haslo)
         {
-            String[] subs = haslo.Split('|');
-            String haslo_jawne = "";
-            int a = 0;
-            for(int i=0; i < subs.Length; i++)
-            {
-                //haslo_jawne += subs[i];
-                a = Int32.Parse(subs[i]);
-                a = a / ziarno;
-                haslo_jawne += (char)a;
-                //Console.WriteLine((char)a);
-            }
-            Console.WriteLine(haslo_jawne);
+
+            String haslo_jawne = dekodowanieHasla(haslo);
 
             if (baza.czyIstnieje(login))
             {
@@ -208,10 +265,29 @@ namespace SerwerTCPAsynch
                 baza.dodajUzytkownika(login, haslo_jawne);
                 return true;
             }
-            
-
-            
+              
         }
 
+        void zmianaHasla(String noweHaslo)
+        {
+            String zdekodowaneHaslo = dekodowanieHasla(noweHaslo);
+            baza.zmianaHasla(login, zdekodowaneHaslo);
+        }
+
+        String dekodowanieHasla(String haslo)
+        {
+            String[] subs = haslo.Split('|');
+            String haslo_jawne = "";
+            int a = 0;
+            for (int i = 0; i < subs.Length; i++)
+            {
+                //haslo_jawne += subs[i];
+                a = Int32.Parse(subs[i]);
+                a = a / ziarno;
+                haslo_jawne += (char)a;
+                //Console.WriteLine((char)a);
+            }
+            return haslo_jawne;
+        }
     }
 }
