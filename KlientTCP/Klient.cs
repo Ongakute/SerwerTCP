@@ -47,6 +47,7 @@ namespace KlientTCP
                     odpowiedz = "ok";
                     dane = System.Text.Encoding.ASCII.GetBytes(odpowiedz);
                     strumien.Write(dane, 0, dane.Length);
+                    Console.WriteLine(wiadomosc);
                     goto Odbior;
                 }
                 Console.WriteLine(wiadomosc);
@@ -94,6 +95,7 @@ namespace KlientTCP
                         dane = System.Text.Encoding.ASCII.GetBytes("ok");
                         strumien.Write(dane, 0, dane.Length);
                         Console.Clear();
+                        break;
                     }
                     czyZalogowany = true;
                     dane = new Byte[1024];
@@ -170,7 +172,7 @@ namespace KlientTCP
                 wiadomosc = System.Text.Encoding.ASCII.GetString(dane, 0, odczyt);
                 Console.WriteLine(wiadomosc);
 
-                if(wiadomosc.Contains("Wybrano 1: Przejdz do aplikacji"))
+                if(wiadomosc.Contains("Wybrano 1 - Przejscie do aplikacji"))
                 {
                     czyZmianaHasla = true;
                     dane = new Byte[1024];
